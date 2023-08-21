@@ -1,6 +1,7 @@
 // app/layout.tsx
-import Navbar from "@/components/navbar/Navbar";
+import { ReduxProvider } from "@/redux/provider";
 import { Providers } from "./providers";
+import Navbar from "@/components/navbar/Navbar";
 
 export default function RootLayout({
   children,
@@ -10,10 +11,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>
-          <Navbar/>
-          {children}
-        </Providers>
+        <ReduxProvider>
+          <Providers>
+            <Navbar />
+            {children}
+          </Providers>
+        </ReduxProvider>
       </body>
     </html>
   );
