@@ -1,4 +1,3 @@
-// app/layout.tsx
 import { ReduxProvider } from "@/redux/provider";
 import { Providers } from "./providers";
 import Navbar from "@/components/navbar/Navbar";
@@ -9,8 +8,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" >
+      <body suppressHydrationWarning={true}>
         <ReduxProvider>
           <Providers>
             <Navbar />

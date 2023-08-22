@@ -1,38 +1,39 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 // import { Icon } from "next/dist/lib/metadata/types/metadata-types";
 
-interface LocationState {
-  latitude: string;
-  longitude: string;
+interface Locate {
+  id: number | string;
+  lat: number; //! enlem
+  lng: number; //! boylam
   placeName: string;
-  placeInfo: string;
   marker: string;
 }
 
+interface LocationState {
+  locations: Locate[];
+}
+
 const initialState: LocationState = {
-  latitude: "", //! enlem
-  longitude: "", //! boylam
-  placeName: "",
-  placeInfo: "",
-  marker: "",
+  locations: [],
 };
 
 export const LocateSlice = createSlice({
-  name: "location",
+  name: "locate",
   initialState,
   reducers: {
-    addLocation: (state, action: PayloadAction<LocationState>) => {
-      state.latitude = action.payload.latitude;
-      state.longitude = action.payload.longitude;
-      state.placeName = action.payload.placeName;
-      state.placeInfo = action.payload.placeInfo;
-      state.marker = action.payload.marker;
+    addLocation: (state, action: PayloadAction<Locate>) => {
+      console.log(action.payload);
+      state.locations = [...state.locations, action.payload];
     },
   },
 });
 
 export const { addLocation } = LocateSlice.actions;
+// export const selectLocation = (state: RootState) => state.locate.locations
 
 export default LocateSlice.reducer;
+
+
