@@ -9,6 +9,7 @@ interface Locate {
   lat: number; //! enlem
   lng: number; //! boylam
   placeName: string;
+  placeInfo:string;
   marker: string;
 }
 

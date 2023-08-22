@@ -32,15 +32,13 @@ const AddLocation = () => {
     []
   );
 
-  const locations = useAppSelector((state) => state.locate.locations);
-  console.log("locations: ",locations);
+  // const locations = useAppSelector((state) => state.locate.locations);
+  // console.log("locations: ", locations);
   const [selectedLocation, setSelectedLocation] = useState(center);
   const dispatch = useAppDispatch();
   const [locationName, setLocationName] = useState({ name: "", id: "" });
-  const [markerColor, setMarkerColor] = useState("");
-  const colors = ["blue", "red", "green", "purple"];
-
-
+  const [markerColor, setMarkerColor] = useState("red");
+  const colors = ["blue", "green", "purple"];
 
   const handleMapClick = (event: google.maps.MapMouseEvent) => {
     if (event.latLng) {
@@ -79,28 +77,44 @@ const AddLocation = () => {
   }
 
   const handleSaveButton = () => {
+    let place_name: string;
+    place_name = locationName.name.split(",")[0];
+    if (place_name.split(" ").length > 1) {
+      place_name = locationName.name.split(" ")[0];
+    }
+
     const data = {
       id: locationName.id,
       lat: selectedLocation.lat,
       lng: selectedLocation.lng,
-      placeName: locationName.name,
+      placeName: place_name,
+      placeInfo: locationName.name,
       marker: markerColor,
     };
-    setSelectedLocation(center)
-    setLocationName({ name: "", id: "" })
-    setMarkerColor("")
-    dispatch(addLocation(data))
-    console.log(data);
+    dispatch(addLocation(data));
+    setSelectedLocation({ lat: 0, lng: 0 });
+    setLocationName({ name: "", id: "" });
+    setMarkerColor("red");
+    console.log(locationName);
+    // console.log(data);
   };
-
-  console.log(selectedLocation);
   console.log(locationName);
-  console.log("color:=>", markerColor);
+
+  // console.log(selectedLocation);
+  // console.log(locationName);
+  // console.log("color:=>", markerColor);
   return (
     <Flex width="100vw" height={`calc(100vh - 70px)`}>
       <Flex flex={1} flexDirection="column">
         <Box width="100%">
-          <Heading height="50px" color="white" as="h4" size="md" bg="teal" textAlign="center">
+          <Heading
+            height="50px"
+            color="white"
+            as="h4"
+            size="md"
+            bg="teal"
+            textAlign="center"
+          >
             Choose Location
           </Heading>
         </Box>
@@ -111,8 +125,12 @@ const AddLocation = () => {
                 {locationName.name}
               </Text>
             </Box>
-            <Box>
-              <Text textAlign="center">Choose Marker Color</Text>
+            <Flex
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text>Choose Marker Color</Text>
               <RadioGroup
                 onChange={(e: string) => setMarkerColor(e)}
                 value={markerColor}
@@ -125,13 +143,15 @@ const AddLocation = () => {
                   ))}
                 </Stack>
               </RadioGroup>
-            </Box>
+            </Flex>
             <Box width="100%">
-              
-              <Button colorScheme="teal" width="100%" onClick={handleSaveButton}>
+              <Button
+                colorScheme="teal"
+                width="100%"
+                onClick={handleSaveButton}
+              >
                 Save Location
               </Button>
-              
             </Box>{" "}
           </>
         )}
