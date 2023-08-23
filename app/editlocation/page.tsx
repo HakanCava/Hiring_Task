@@ -98,12 +98,13 @@ const EditLocation: React.FC<IEditLocation> = ({ searchParams }) => {
       <Flex flex={1} flexDirection="column">
         <Box width="100%">
           <Heading
-            height="50px"
+            height="75px"
             color="white"
             as="h4"
             size="md"
             bg="teal"
             textAlign="center"
+            p="5"
           >
             Change Location
           </Heading>

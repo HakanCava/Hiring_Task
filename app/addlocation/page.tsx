@@ -25,6 +25,7 @@ type LatLngLiteral = google.maps.LatLngLiteral
 const AddLocation = () => {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+
   });
 
   const center = useMemo<LatLngLiteral>(
@@ -104,12 +105,15 @@ const AddLocation = () => {
       <Flex flex={1} flexDirection="column">
         <Box width="100%">
           <Heading
-            height="50px"
+            height="75px"
             color="white"
             as="h4"
             size="md"
             bg="teal"
             textAlign="center"
+            verticalAlign="center"
+            px="3"
+            py="5"
           >
             Choose Location
           </Heading>

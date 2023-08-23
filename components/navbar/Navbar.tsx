@@ -10,7 +10,7 @@ const Navbar = () => {
           <Icon as={FaMapMarkerAlt} w={8} h={8} color="red.500" />
         </Link>
       </Flex>
-      <Flex flex={3} justifyContent="space-evenly" alignItems="center" color="white">
+      <Flex flex={4} justifyContent="space-evenly" alignItems="center" color="white">
         <Box  display="flex" alignItems="center">
           <Link href="/addlocation">Add Location</Link>
         </Box>

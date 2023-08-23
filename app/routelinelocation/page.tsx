@@ -1,29 +1,19 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
-import {
-  useJsApiLoader,
-  GoogleMap,
-  Marker,
-
-} from "@react-google-maps/api";
-import {
-  Flex,
-  SkeletonText,
-  Heading,
-  Text,
-  Box,
-} from "@chakra-ui/react";
+import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
+import { Flex, SkeletonText, Heading, Text, Box } from "@chakra-ui/react";
 
 import MarkerInfo from "@/components/marker/Marker";
-
 
 const RouteLine = () => {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+    libraries: ["places"],
   });
 
   const [textDistance, setTextDistance] = useState("");
+  const [textDuration, setTextDuration] = useState("");
 
   const [userLocation, setUserLocation] = useState<GeolocationPosition | any>();
 
@@ -64,15 +54,23 @@ const RouteLine = () => {
             size="md"
             bg="teal"
             textAlign="center"
+            py="3"
           >
             Distance
           </Heading>
         </Box>
-        <Box>
+        <Box p="3">
           <Text>
-            <Heading as="h4"
-            size="md">Your Distance:</Heading>
-            {textDistance} metre
+            <Heading as="h4" size="md">
+              Your Distance:
+            </Heading>
+            {textDistance}
+          </Text>
+          <Text>
+            <Heading as="h4" size="md">
+              Your Duration:
+            </Heading>
+            {textDuration}
           </Text>
         </Box>
       </Flex>
@@ -91,7 +89,6 @@ const RouteLine = () => {
           }}
           zoom={13}
           mapContainerStyle={{ width: "100%", height: "100%" }}
-          // onClick={handleMapClick}
         >
           <Marker
             position={{
@@ -111,8 +108,8 @@ const RouteLine = () => {
               key={location.id}
               location={location}
               userLocation={userLocation}
-              textDistance={textDistance}
               setTextDistance={setTextDistance}
+              setTextDuration={setTextDuration}
             />
           ))}
         </GoogleMap>

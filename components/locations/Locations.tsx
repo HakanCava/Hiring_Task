@@ -40,7 +40,7 @@ dispatch(deleteLocation(id))
       
         <Tr key={location.id}>
           <Td>{location.placeName}</Td>
-          <Td>{location.placeInfo}</Td>
+          <Td display={{ base: "none", lg: "block" }}  >{location.placeInfo}</Td>
           <Td>
             <FaMapMarkerAlt
               onClick={() => setToggle((pre) => !pre)}
@@ -60,7 +60,7 @@ dispatch(deleteLocation(id))
             </Link>
           </Td>
           <Td>
-            <AiFillDelete onClick={()=>handleDelete(location.id)} color="red" fontSize="1.3rem" />
+            <AiFillDelete style={{cursor:"pointer"}} onClick={()=>handleDelete(location.id)} color="red" fontSize="1.3rem" />
           </Td>
         </Tr>
   
