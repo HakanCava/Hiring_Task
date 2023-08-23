@@ -9,7 +9,7 @@ interface Locate {
   lat: number; //! enlem
   lng: number; //! boylam
   placeName: string;
-  placeInfo:string;
+  placeInfo: string;
   marker: string;
 }
 
@@ -26,15 +26,19 @@ export const LocateSlice = createSlice({
   initialState,
   reducers: {
     addLocation: (state, action: PayloadAction<Locate>) => {
-      console.log(action.payload);
+      console.log("addLocation",action.payload);
       state.locations = [...state.locations, action.payload];
+    },
+    deleteLocation: (state, action) => {
+      console.log("deleteLocation",action.payload);
+      state.locations = [...state.locations].filter(
+        (loc) => loc.id !== action.payload
+      );
     },
   },
 });
 
-export const { addLocation } = LocateSlice.actions;
+export const { addLocation, deleteLocation } = LocateSlice.actions;
 // export const selectLocation = (state: RootState) => state.locate.locations
 
 export default LocateSlice.reducer;
-
-

@@ -14,11 +14,7 @@ const Navbar = () => {
         <Box  display="flex" alignItems="center">
           <Link href="/addlocation">Add Location</Link>
         </Box>
-        <Box display="flex" alignItems="center">
-            <Link href="/editlocation">
-          Edit Location
-            </Link>
-        </Box>
+        
         <Box display="flex" alignItems="center">
             <Link href="/getlocations">
           Get Locations

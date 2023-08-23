@@ -52,30 +52,16 @@ const GetLocations = () => {
             <Thead>
               <Tr>
                 <Th border="1px">Place Name</Th>
+                <Th border="1px">Place Info</Th>
                 <Th border="1px">Icon</Th>
                 {toggle && <Th></Th>}
                 <Th border="1px">Edit</Th>
+                <Th border="1px">Delete</Th>
               </Tr>
             </Thead>
             <Tbody>
-              {/* {locations?.map((location) => (
-                <Tr key={location.id}>
-                  <Td>{location.placeName}</Td>
-                  <Td>
-                    <FaMapMarkerAlt onClick={()=>setToggle(pre=>!pre)} color={location.marker} fontSize="1.5rem" />
-                  </Td>
-                  {toggle && (
-                    <Td>
-                      latitude:{location.lat} & longitude:{location.lng}
-                    </Td>
-                  )}
-                  <Td>
-                    <BsBoxArrowInUpRight color="red" fontSize="1.3rem" />
-                  </Td>
-                </Tr>
-              ))} */}
               {locations?.map((location) => (
-              <Locations key={location.id} location={location}/>
+                <Locations key={location.id} location={location} />
               ))}
             </Tbody>
           </Table>

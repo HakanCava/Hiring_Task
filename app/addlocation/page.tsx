@@ -152,7 +152,7 @@ const AddLocation = () => {
               >
                 Save Location
               </Button>
-            </Box>{" "}
+            </Box>
           </>
         )}
       </Flex>
