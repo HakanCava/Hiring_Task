@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useAppDispatch } from "@/redux/hooks";
 import {
   useJsApiLoader,
   GoogleMap,
@@ -19,7 +19,6 @@ import {
 } from "@chakra-ui/react";
 import { addLocation } from "@/redux/features/locateSlice";
 
-type LatLngLiteral = google.maps.LatLngLiteral
 
 
 const AddLocation = () => {
@@ -56,7 +55,6 @@ const AddLocation = () => {
       if (selectedLocation.lat && selectedLocation.lng) {
         geocoder.geocode({ location: selectedLocation }, (results, status) => {
           if (status === google.maps.GeocoderStatus.OK && results) {
-            console.log(results);
             if (results[0]) {
               setLocationName({
                 ...locationName,

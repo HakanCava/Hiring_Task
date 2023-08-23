@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
 import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
 import { Flex, SkeletonText, Heading, Text, Box } from "@chakra-ui/react";
-
 import MarkerInfo from "@/components/marker/Marker";
 
 const RouteLine = () => {

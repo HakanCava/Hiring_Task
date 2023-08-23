@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import locateReducer from './features/locateSlice'
-import storage from "redux-persist/lib/storage" // defaults to localStorage for web
+import storage from "redux-persist/lib/storage" 
 
 import {
   persistStore,

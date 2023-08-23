@@ -1,21 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../store";
 
-// import { Icon } from "next/dist/lib/metadata/types/metadata-types";
 
-interface Locate {
-  id: number | string;
-  lat: number; //! enlem
-  lng: number; //! boylam
-  placeName: string;
-  placeInfo: string;
-  marker: string;
-}
-
-interface LocationState {
-  locations: Locate[];
-}
 
 const initialState: LocationState = {
   locations: [],
@@ -39,6 +25,6 @@ export const LocateSlice = createSlice({
 });
 
 export const { addLocation, deleteLocation } = LocateSlice.actions;
-// export const selectLocation = (state: RootState) => state.locate.locations
+
 
 export default LocateSlice.reducer;

@@ -11,7 +11,6 @@ import {
   TableContainer,
   Button,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import Locations from "@/components/locations/Locations";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 

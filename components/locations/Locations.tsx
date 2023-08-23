@@ -8,18 +8,6 @@ import Link from "next/link";
 import { useAppDispatch } from "@/redux/hooks";
 import { deleteLocation } from "@/redux/features/locateSlice";
 
-interface Props {
-  id: number | string;
-  lat: number; 
-  lng: number; 
-  placeName: string;
-  placeInfo:string;
-  marker: string;
-}
-
-type ILocations={
-  location:Props
-}
 
 const Locations:React.FC<ILocations> = ({location}) => {
   const [toggle, setToggle] = useState(false);

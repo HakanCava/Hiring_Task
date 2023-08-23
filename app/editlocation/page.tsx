@@ -13,16 +13,7 @@ import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
 import { useAppDispatch } from "@/redux/hooks";
 import { addLocation, deleteLocation } from "@/redux/features/locateSlice";
 
-interface IEditLocation {
-  searchParams: {
-    id: number | string;
-    lat: number;
-    lng: number;
-    placeName: string;
-    placeInfo: string;
-    marker: string;
-  };
-}
+
 
 const EditLocation: React.FC<IEditLocation> = ({ searchParams }) => {
   const { isLoaded } = useJsApiLoader({
@@ -51,7 +42,6 @@ const EditLocation: React.FC<IEditLocation> = ({ searchParams }) => {
       if (locationValue.lat && locationValue.lng) {
         geocoder.geocode({ location: locationValue }, (results, status) => {
           if (status === google.maps.GeocoderStatus.OK && results) {
-            console.log(results);
             if (results[0]) {
               setLocationName({
                 ...locationName,
@@ -77,7 +67,6 @@ const EditLocation: React.FC<IEditLocation> = ({ searchParams }) => {
     if (place_name.split(" ").length > 1) {
       place_name = locationName.name.split(" ")[0];
     }
-
     const data = {
       id: locationName.id,
       lat: locationValue.lat,
