@@ -5,7 +5,6 @@ import { AiFillDelete } from "react-icons/ai";
 import { Td, Tr } from "@chakra-ui/react";
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from 'next/router';
 import { useAppDispatch } from "@/redux/hooks";
 import { deleteLocation } from "@/redux/features/locateSlice";
 

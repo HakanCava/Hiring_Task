@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 import {
   Box,
   Button,
@@ -9,12 +9,7 @@ import {
   SkeletonText,
   Text,
 } from "@chakra-ui/react";
-import {
-  useJsApiLoader,
-  GoogleMap,
-  Marker,
-  LoadScript,
-} from "@react-google-maps/api";
+import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api";
 import { useAppDispatch } from "@/redux/hooks";
 import { addLocation, deleteLocation } from "@/redux/features/locateSlice";
 
@@ -34,7 +29,7 @@ const EditLocation: React.FC<IEditLocation> = ({ searchParams }) => {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
   });
   const dispatch = useAppDispatch();
-  const router = useRouter()
+  const router = useRouter();
   const values = searchParams;
   const [locationValue, setLocationValue] = useState({
     lat: +values.lat,
@@ -91,15 +86,13 @@ const EditLocation: React.FC<IEditLocation> = ({ searchParams }) => {
       placeInfo: locationName.name,
       marker: values.marker,
     };
-    dispatch(deleteLocation(values.id))
+    dispatch(deleteLocation(values.id));
     dispatch(addLocation(data));
     setLocationValue({ lat: locationValue.lat, lng: locationValue.lng });
     setLocationName({ name: "", id: "" });
-router.push('/getlocations')
-    // console.log(data);
+    router.push("/getlocations");
   };
-  console.log(locationName);
-  console.log(locationValue);
+
   return (
     <Flex width="100vw" height={`calc(100vh - 70px)`}>
       <Flex flex={1} flexDirection="column">

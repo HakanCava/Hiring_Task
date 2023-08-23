@@ -5,15 +5,12 @@ import {
   useJsApiLoader,
   GoogleMap,
   Marker,
-  LoadScript,
 } from "@react-google-maps/api";
 import {
   Button,
   Flex,
-  Input,
   SkeletonText,
   Heading,
-  Divider,
   Text,
   Box,
   Radio,
@@ -35,8 +32,7 @@ const AddLocation = () => {
     []
   );
 
-  // const locations = useAppSelector((state) => state.locate.locations);
-  // console.log("locations: ", locations);
+
   const [selectedLocation, setSelectedLocation] = useState(center);
   const dispatch = useAppDispatch();
   const [locationName, setLocationName] = useState({ name: "", id: "" });
@@ -98,14 +94,11 @@ const AddLocation = () => {
     setSelectedLocation({ lat: 0, lng: 0 });
     setLocationName({ name: "", id: "" });
     setMarkerColor("red");
-    console.log(locationName);
-    // console.log(data);
+  
+ 
   };
-  console.log(locationName);
 
-  // console.log(selectedLocation);
-  // console.log(locationName);
-  // console.log("color:=>", markerColor);
+
   return (
     <Flex width="100vw" height={`calc(100vh - 70px)`}>
       <Flex flex={1} flexDirection="column">

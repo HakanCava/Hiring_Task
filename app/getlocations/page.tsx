@@ -2,31 +2,19 @@
 import { useAppSelector } from "@/redux/hooks";
 import {
   Flex,
-  Heading,
-  ListIcon,
-  ListItem,
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
-  Td,
-  TableCaption,
   TableContainer,
-  Icon,
   Button,
-  Text,
 } from "@chakra-ui/react";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { BsBoxArrowInUpRight } from "react-icons/bs";
 import { useState } from "react";
 import Locations from "@/components/locations/Locations";
 
 const GetLocations = () => {
   const locations = useAppSelector((state) => state.locate.locations);
-  console.log(locations);
-  const [toggle, setToggle] = useState(false);
   return (
     <Flex
       width="100vw"
@@ -52,7 +40,6 @@ const GetLocations = () => {
                 <Th border="1px">Place Name</Th>
                 <Th border="1px">Place Info</Th>
                 <Th border="1px">Icon</Th>
-                {toggle && <Th></Th>}
                 <Th border="1px">Edit</Th>
                 <Th border="1px">Delete</Th>
               </Tr>

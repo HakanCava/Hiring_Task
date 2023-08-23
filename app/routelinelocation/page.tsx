@@ -1,30 +1,22 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import React, { useEffect, useState } from "react";
+import { useAppSelector } from "@/redux/hooks";
 import {
   useJsApiLoader,
   GoogleMap,
   Marker,
-  LoadScript,
+
 } from "@react-google-maps/api";
 import {
-  Button,
   Flex,
-  Input,
   SkeletonText,
   Heading,
-  Divider,
   Text,
   Box,
-  Radio,
-  RadioGroup,
-  Stack,
 } from "@chakra-ui/react";
-import { addLocation } from "@/redux/features/locateSlice";
-import { text } from "stream/consumers";
+
 import MarkerInfo from "@/components/marker/Marker";
 
-type LatLngLiteral = google.maps.LatLngLiteral;
 
 const RouteLine = () => {
   const { isLoaded } = useJsApiLoader({
