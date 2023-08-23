@@ -41,8 +41,6 @@ const GetLocations = () => {
       <Flex
         width="90%"
         height="90%"
-        border="1px"
-        borderColor="red"
         p="1"
         justifyContent="center"
         my="2"

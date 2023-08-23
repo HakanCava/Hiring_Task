@@ -22,12 +22,15 @@ import {
 } from "@chakra-ui/react";
 import { addLocation } from "@/redux/features/locateSlice";
 
+type LatLngLiteral = google.maps.LatLngLiteral
+
+
 const AddLocation = () => {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
   });
 
-  const center = useMemo(
+  const center = useMemo<LatLngLiteral>(
     () => ({ lat: 41.01317962397874, lng: 28.994509706224644 }),
     []
   );
