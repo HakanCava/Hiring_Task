@@ -9,7 +9,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Installation
 Install your local
 ```bash
-git clone
+git clone https://github.com/HakanCava/Hiring_Task.git
 ```
 
 ## Run your local
