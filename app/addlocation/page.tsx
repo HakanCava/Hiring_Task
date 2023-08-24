@@ -48,12 +48,17 @@ const AddLocation = () => {
   const colors = ["blue", "green", "purple"];
 
   const handleMapClick = (event: google.maps.MapMouseEvent) => {
-    if (event.latLng) {
-      setSelectedLocation({
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng(),
-      });
+    try {
+      if (event.latLng) {
+        setSelectedLocation({
+          lat: event.latLng.lat(),
+          lng: event.latLng.lng(),
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
+    
   };
 
   useEffect(() => {
@@ -62,7 +67,7 @@ const AddLocation = () => {
 
       if (selectedLocation.lat && selectedLocation.lng) {
         geocoder.geocode({ location: selectedLocation }, (results, status) => {
-          if (status === google.maps.GeocoderStatus.OK && results) {
+          if (status ==="OK" && results) {
             if (results[0]) {
               setLocationName({
                 ...locationName,
