@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./marker.css";
 import {
   useJsApiLoader,
@@ -19,6 +19,12 @@ const MarkerInfo: React.FC<IMarkerInfo> = ({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
     libraries: ["places"],
   });
+  const [content, setContent] = useState<any>(null);
+  useEffect(() => {
+    if (!isLoaded) {
+      setContent(<SkeletonText />);
+    }
+  }, [isLoaded]);
   const [toggle, setToggle] = useState(false);
   const startMarker = new google.maps.LatLng(
     userLocation && userLocation.coords
@@ -65,12 +71,13 @@ const MarkerInfo: React.FC<IMarkerInfo> = ({
     setTextDuration(""); 
   };
 
-  if (!isLoaded) {
-    return <SkeletonText />;
-  }
+  // if (!isLoaded) {
+  //   return <SkeletonText />;
+  // }
 
   return (
     <>
+    {content}
       <Marker
         position={{ lat: location.lat, lng: location.lng }}
         icon={{

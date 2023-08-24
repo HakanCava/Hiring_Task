@@ -1,4 +1,5 @@
 "use client";
+import React from 'react'
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { BsBoxArrowInUpRight } from "react-icons/bs";
 import { AiFillDelete } from "react-icons/ai";

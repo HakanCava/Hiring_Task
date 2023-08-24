@@ -1,4 +1,5 @@
 "use client";
+import React from 'react'
 import { Flex, Box, Link, Icon } from "@chakra-ui/react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
