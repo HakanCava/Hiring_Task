@@ -10,13 +10,9 @@ const RouteLine = () => {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
     libraries: ["places"],
   });
-  const [content, setContent] = useState<any>(null);
 
-  useEffect(() => {
-    if (!isLoaded) {
-      setContent(<SkeletonText />);
-    }
-  }, [isLoaded]);
+
+ 
 
   const [textDistance, setTextDistance] = useState("");
   const [textDuration, setTextDuration] = useState("");
@@ -43,15 +39,16 @@ const RouteLine = () => {
   }, []);
 
   const locations = useAppSelector((state) => state.locate.locations);
-  console.log("locations: ", locations);
 
-  // if (!isLoaded) {
-  //   return <SkeletonText />;
-  // }
-
+  
+  if (!isLoaded) {
+    return <SkeletonText />;
+  }
+  
+  console.log(isLoaded);
   return (
     <Flex width="100vw" height={`calc(100vh - 70px)`}>
-      {content}
+
       <Flex flex={1} flexDirection="column">
         <Box width="100%">
           <Heading
@@ -68,21 +65,22 @@ const RouteLine = () => {
         </Box>
         <Box p="3">
           <Text>
-            <Heading as="h4" size="md">
+           
               Your Distance:
-            </Heading>
+            
             {textDistance}
           </Text>
           <Text>
-            <Heading as="h4" size="md">
+           
               Your Duration:
-            </Heading>
+           
             {textDuration}
           </Text>
         </Box>
       </Flex>
 
       <Flex flex={4}>
+      
         <GoogleMap
           center={{
             lat:

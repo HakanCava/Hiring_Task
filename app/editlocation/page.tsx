@@ -17,15 +17,7 @@ import { addLocation, deleteLocation } from "@/redux/features/locateSlice";
 
 const EditLocation: React.FC<IEditLocation> = ({ searchParams }) => {
 
-  // useEffect(()=>{
-    
-  //   const { isLoaded } = useJsApiLoader({
-  //     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
-  //   });
-  //   if (!isLoaded) {
-  //     return <SkeletonText />;
-  //   }
-  // },[])
+ 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
   });
@@ -99,6 +91,10 @@ const EditLocation: React.FC<IEditLocation> = ({ searchParams }) => {
     setLocationName({ name: "", id: "" });
     router.push("/getlocations");
   };
+
+  if (!isLoaded) {
+    return <SkeletonText />;
+  }
 
   return (
     <Flex width="100vw" height={`calc(100vh - 70px)`}>
