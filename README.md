@@ -7,9 +7,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 # Getting Started
 
 ## Installation
-
+Install your local
 ```bash
-yarn create next-app
+git clone
 ```
 
 ## Run your local
