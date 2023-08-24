@@ -1,3 +1,4 @@
+import React from 'react'
 import { ReduxProvider } from "@/redux/provider";
 import { Providers } from "./providers";
 import Navbar from "@/components/navbar/Navbar";
