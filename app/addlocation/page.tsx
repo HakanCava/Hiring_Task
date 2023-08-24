@@ -27,6 +27,14 @@ const AddLocation = () => {
 
   });
 
+  const [content, setContent] = useState<any>(null);
+
+  useEffect(() => {
+    if (!isLoaded) {
+      setContent(<SkeletonText />);
+    }
+  }, [isLoaded]);
+
   const center = useMemo<LatLngLiteral>(
     () => ({ lat: 41.01317962397874, lng: 28.994509706224644 }),
     []
@@ -68,11 +76,11 @@ const AddLocation = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [selectedLocation]);
+  }, [selectedLocation, locationName]);
 
-  if (!isLoaded) {
-    return <SkeletonText />;
-  }
+  // if (!isLoaded) {
+  //   return <SkeletonText />;
+  // }
 
   const handleSaveButton = () => {
     let place_name: string;
@@ -100,6 +108,7 @@ const AddLocation = () => {
 
   return (
     <Flex width="100vw" height={`calc(100vh - 70px)`}>
+      {content}
       <Flex flex={1} flexDirection="column">
         <Box width="100%">
           <Heading

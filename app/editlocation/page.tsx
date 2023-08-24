@@ -16,9 +16,27 @@ import { addLocation, deleteLocation } from "@/redux/features/locateSlice";
 
 
 const EditLocation: React.FC<IEditLocation> = ({ searchParams }) => {
+
+  // useEffect(()=>{
+    
+  //   const { isLoaded } = useJsApiLoader({
+  //     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+  //   });
+  //   if (!isLoaded) {
+  //     return <SkeletonText />;
+  //   }
+  // },[])
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
   });
+
+  const [content, setContent] = useState<any>(null);
+
+  useEffect(() => {
+    if (!isLoaded) {
+      setContent(<SkeletonText />);
+    }
+  }, [isLoaded]);
   const dispatch = useAppDispatch();
   const router = useRouter();
   const values = searchParams;
@@ -55,11 +73,11 @@ const EditLocation: React.FC<IEditLocation> = ({ searchParams }) => {
     } catch (error) {
       console.log(error);
     }
-  }, [locationValue]);
+  }, [locationValue, locationName]);
 
-  if (!isLoaded) {
-    return <SkeletonText />;
-  }
+ 
+
+  
 
   const handleChangeButton = () => {
     let place_name: string;
@@ -84,6 +102,7 @@ const EditLocation: React.FC<IEditLocation> = ({ searchParams }) => {
 
   return (
     <Flex width="100vw" height={`calc(100vh - 70px)`}>
+      {content}
       <Flex flex={1} flexDirection="column">
         <Box width="100%">
           <Heading

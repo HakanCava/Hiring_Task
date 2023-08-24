@@ -10,6 +10,13 @@ const RouteLine = () => {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
     libraries: ["places"],
   });
+  const [content, setContent] = useState<any>(null);
+
+  useEffect(() => {
+    if (!isLoaded) {
+      setContent(<SkeletonText />);
+    }
+  }, [isLoaded]);
 
   const [textDistance, setTextDistance] = useState("");
   const [textDuration, setTextDuration] = useState("");
@@ -38,12 +45,13 @@ const RouteLine = () => {
   const locations = useAppSelector((state) => state.locate.locations);
   console.log("locations: ", locations);
 
-  if (!isLoaded) {
-    return <SkeletonText />;
-  }
+  // if (!isLoaded) {
+  //   return <SkeletonText />;
+  // }
 
   return (
     <Flex width="100vw" height={`calc(100vh - 70px)`}>
+      {content}
       <Flex flex={1} flexDirection="column">
         <Box width="100%">
           <Heading
