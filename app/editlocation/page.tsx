@@ -94,6 +94,7 @@ const EditLocation: React.FC<IEditLocation> = ({ searchParams }) => {
             bg="teal"
             textAlign="center"
             p="5"
+            data-testid="editHeading"
           >
             Change Location
           </Heading>

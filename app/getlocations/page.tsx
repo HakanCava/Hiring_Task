@@ -40,7 +40,7 @@ const GetLocations = () => {
           <Table size="sm">
             <Thead>
               <Tr>
-                <Th border="1px">Place Name</Th>
+                <Th border="1px" data-testid="placeName">Place Name</Th>
                 <Th border="1px" display={{ base: "none", lg: "block" }} >Place Info</Th>
                 <Th border="1px">Icon</Th>
                 <Th border="1px">Edit</Th>
